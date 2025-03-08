@@ -28,5 +28,4 @@ const validateSession = (req, res) => {
     res.json({ message: 'Sesión válida', user: decoded });
   });
 };
-
 module.exports = { login, validateSession };

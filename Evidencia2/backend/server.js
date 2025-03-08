@@ -6,7 +6,7 @@ const app = express();
 const port = 5000;
 
 app.use(cors({
-  origin: '*', // Cambia esto si tu frontend está en otro puerto
+  origin: '*', 
   credentials: true,
 }));
 app.use(express.json());

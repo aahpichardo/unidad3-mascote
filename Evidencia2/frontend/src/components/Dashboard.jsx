@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { validateSession } from '../services/authService';
+import './dashboard.css';
+import perroHacker from '../assets/perrohacker.jpg'
 
 const Dashboard = () => {
   const { user, token, logout } = useContext(AuthContext);
@@ -25,6 +27,12 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    if (timeLeft === 60) {
+      alert('La sesion expirará en 1 minuto');
+    }
+  }, [timeLeft]);
+
+  useEffect(() => {
     if (timeLeft === 0) {
       logout();
       alert('Sesión expirada por inactividad');
@@ -36,11 +44,19 @@ const Dashboard = () => {
   };
 
   return (
-    <div onClick={handleInteraction}>
-      <h1>Dashboard</h1>
-      <p>{message}</p>
-      <p>Tiempo restante: {timeLeft} segundos</p>
-      <button onClick={logout}>Logout</button>
+    <div className="dashboard-container" onClick={handleInteraction}>
+      <h1 className="dashboard-title">Dashboard, para reiniciar el contador, da un clic en cualquier parte del fondo blanco </h1>
+      <p className="dashboard-message">{message}</p>
+      <p className="dashboard-timer">Tiempo restante: {timeLeft} segundos</p>
+      <button className="dashboard-button" onClick={logout}>
+        Salir
+      </button>
+      <div className="dashboard-status">
+        <span>Estas dentro</span>
+      </div>
+      <div className="dashboard-image">
+        <img src={perroHacker} alt="Perro Hacker" />
+      </div>
     </div>
   );
 };

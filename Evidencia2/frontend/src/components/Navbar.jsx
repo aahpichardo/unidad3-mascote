@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import './navbar.css'
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav className="navbar">
       {user ? (
-        <button onClick={logout}>Logout</button>
+        <button className="navbar-button" onClick={logout}>
+          Logout
+        </button>
       ) : (
-        <span>Por favor inicia sesión</span>
+        <span className="navbar-message">Por favor inicia sesión</span>
       )}
     </nav>
   );
